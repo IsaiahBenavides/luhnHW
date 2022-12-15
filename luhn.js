@@ -1,4 +1,4 @@
-function luhn(n){
+function validCard(n){
     let digits = n.toString().split('').map(Number);
 
     // is it even?
@@ -15,13 +15,17 @@ function luhn(n){
 
     // sum of digits
     const sum = digits.reduce((acc, digit) => acc += digit, 0)
-    console.log(sum)
+    console.log(sum % 10)
 
     return sum % 10 === 0
 }
 
-luhn(123) // false
-luhn(1) // false
-luhn(2121) // true
-luhn(1230) // true
-luhn(56789) // false
+validCard(123) // false
+validCard(1) // false
+validCard(2121) // true
+validCard(1230) // true
+validCard(56789) // false
+validCard(1234567890123456); //should be false
+validCard(4408041234567893); //should be true
+validCard(38520000023237); //should be true
+validCard(4222222222222); //should be true
